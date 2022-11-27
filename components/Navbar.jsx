@@ -1,9 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import {useState,React} from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
+
+
+
 function Navbar() {
+  const [nav,setNav] = useState(false);
+
+  function changeView(){
+    setNav(!nav)
+  }
+
+
+
   return (
     <div className="fixed w-full h-20 shadow-xl z-[100]">
       <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
@@ -14,7 +25,7 @@ function Navbar() {
           height="50"
         />
         <div>
-          <ul className="hidden md:flex">
+          <ul className={nav ? 'hidden ': 'hidden md:flex'}>
             <Link href="/">
               <li className="ml-10 text-sm uppercase hover:border-b">Home</li>
             </Link>
@@ -35,21 +46,27 @@ function Navbar() {
               </li>
             </Link>
           </ul>
-          <div className="md:hidden">
+          <div onClick={changeView} className="md:hidden">
             <AiOutlineMenu size={25} />
           </div>
         </div>
       </div>
-      <div className="fixed left-0 top-0 w-full h-screen bg-black/70">
-        <div className="fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500">
+      <div className={nav ? 'fixed left-0 top-0 w-full h-screen bg-black/70' : ''}>
+        <div className={nav ? 'fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500' : ' fixed left-[-100%] top-[-100%]'}>
           <div>
-            <div>
+            <div className="flex justify-between items-center">
               <Image
                 src="/../public/assets/logo3.png"
                 alt="/"
                 height="100"
                 width="100"
               ></Image>
+              <div onClick={changeView}>
+              <AiOutlineClose className="shadow-xl rounded-xl m-2 cursor-pointer" size={25}/>
+              </div>
+            </div>
+            <div>
+              <p className="uppercase py-10">Let's Link and Build</p>
             </div>
           </div>
         </div>
