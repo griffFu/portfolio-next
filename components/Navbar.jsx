@@ -11,7 +11,7 @@ function Navbar() {
   }
 
   return (
-    <div className="fixed w-full h-20 shadow-xl z-[100]">
+    <div className="fixed w-full h-20 shadow-xl">
       <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
         <Image
           src="/../public/assets/logo3.png"
@@ -73,6 +73,11 @@ function Navbar() {
             </div>
             <div>
               <p className="uppercase py-10">Lets Link and Build</p>
+              <ul className='uppercase '>
+                <li className='hover:text-green-900'>About</li>
+                <li className='hover:text-green-900'>Skills</li>
+                <li className='hover:text-green-900'>Projects</li>
+              </ul>
             </div>
           </div>
         </div>
